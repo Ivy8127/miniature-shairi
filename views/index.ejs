@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+</head>
+<body>
+    <h4>We're in ze home page!</h4>
+    <form action="/poems" method="POST">
+    <input type="text" placeholder="title" name="title">
+     <input type="text" placeholder="poem" name="poem">
+    <button type="submit">Submit</button>
+</form>
+<h2>Poems</h2>
+<ul>
+    <% for (var i = 0; i < poems.length ; i++) {%>
+    <li>
+        <span><%= poems[i].title %></span>
+        <span><%= poems[i].poem %></span>
+    </li>
+    <% } %>
+</ul>
+
+</body>
+</html>
