@@ -51,13 +51,29 @@ client.connect(err => {
                 upsert: true
             }
         )
-        .then(results =>{
+        .then(res =>{
             res.json('success')
         })
         .catch(error =>{
             console.error(error)
         })
     }) 
+
+//Delete
+    app.delete('/poems',(req,res)=>{
+        mashairiCollection.deleteOne(
+            {title : req.body.title}
+        )
+        .then(result =>{
+            if (result.deletedCount === 0) {
+                return res.json('No poem to delete')
+              }
+            return res.json('Deleted!')
+        })
+        .catch( err =>{
+            console.error(err)
+        })
+    })   
 //this is used to create a server that our app on our browser can connect to
     app.listen(3000, ()=> {
         console.log("Listening on port 3000")
